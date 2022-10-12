@@ -43,7 +43,6 @@ export default class Game {
 
     movePieceRight(){
         this.activePiece.x +=1
-        console.log(this.activePiece.x)
         if(this.isPieceOutOfBounds()){
             this.activePiece.x -=1;
         }
@@ -56,10 +55,19 @@ export default class Game {
     };
 
     isPieceOutOfBounds(){
-        const playfied = this.playfied
-        const {y, x} = this.activePiece
-        console.log(x)
-        return playfied[y] === undefined || playfied[y][x] === undefined
+        const {y: pieceY, x: pieceX, blocks} = this.activePiece
+        console.log(pieceX)
+        for(let y = 0; y < blocks.length; y++ ){
+            console.log("блок = " + y )
+            for(let x = 0; x < blocks[y].length; x++ ){
+                console.log(pieceX + y )
+                if(this.playfied[pieceY + y] === undefined || this.playfied[pieceY + y][pieceX + x] === undefined){
+
+                    return true
+                }
+            }
+        }
+        return false
     };
 
     lockPiece(){
