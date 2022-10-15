@@ -35,7 +35,7 @@ export default class Game {
     };
     movePieceLeft(){
         this.activePiece.x -=1
-        if(this.isPieceOutOfBounds()){
+        if(this.hasCollision()){
             this.activePiece.x +=1;
            
         }    
@@ -43,7 +43,7 @@ export default class Game {
 
     movePieceRight(){
         this.activePiece.x +=1
-        if(this.isPieceOutOfBounds()){
+        if(this.hasCollision()){
             this.activePiece.x -=1;
         }
            
@@ -52,17 +52,22 @@ export default class Game {
     };
     movePieceDown(){
         this.activePiece.y +=1
+        if(this.hasCollision()){
+            this.activePiece.y -=1;
+        }
     };
 
-    isPieceOutOfBounds(){
+    hasCollision(){
         const {y: pieceY, x: pieceX, blocks} = this.activePiece
-        console.log(pieceX)
+        console.log(blocks)
         for(let y = 0; y < blocks.length; y++ ){
-            console.log("блок = " + y )
             for(let x = 0; x < blocks[y].length; x++ ){
-                console.log(pieceX + y )
-                if(this.playfied[pieceY + y] === undefined || this.playfied[pieceY + y][pieceX + x] === undefined){
-
+               
+                if(
+                     blocks[y][x]  &&  (this.playfied[pieceY + y] === undefined || this.playfied[pieceY + y][pieceX + x] === undefined || this.playfied[pieceY + y][pieceX + x] )) 
+                    {
+                        console.log("Работаю " + pieceY )
+                        console.log( blocks[y][x])
                     return true
                 }
             }
@@ -72,9 +77,14 @@ export default class Game {
 
     lockPiece(){
         const {y: pieceY, x: pieceX, blocks} = this.activePiece
+        console.log(pieceY)
         for(let y = 0; y < blocks.length; y++ ){
             for(let x = 0; x < blocks[y].length; x++ ){
-                this.playfied[pieceY + y][pieceX + x] = blocks[y][x];
+                if(blocks[y][x]){
+                    this.playfied[pieceY + y][pieceX + x] = blocks[y][x];
+                }else{
+                }
+                
             }
         }
     }

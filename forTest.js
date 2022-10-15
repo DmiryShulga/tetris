@@ -15,7 +15,7 @@ showPalyfild.onclick = function(){
 }
 // КОНСОЛЬ
 
-
+console.log(Boolean(0))
 // Передвижение
 const left = document.querySelector('.left')
 const right = document.querySelector('.right')
@@ -33,7 +33,6 @@ right.onclick = function(){
 }
 down.onclick = function(){
     game.movePieceDown()
-    console.clear()
     console.log(game.playfied)
 }
 show.onclick = function(){
