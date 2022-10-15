@@ -1,6 +1,5 @@
 const testGame = window.game
 
-
 const showPalyfild = document.querySelector('.showPlayfied')
 const learConsole = document.querySelector('.learConsole')
 const show = document.querySelector('.show')
@@ -10,8 +9,8 @@ learConsole.onclick = function(){
     console.clear()
 }
 showPalyfild.onclick = function(){
-    console.log(testGame.activePiece)
-    console.log(testGame.playfied)
+    game.rotatePiece()
+    console.log(game.activePiece.blocks)
 }
 // КОНСОЛЬ
 
@@ -24,7 +23,7 @@ const down = document.querySelector('.down')
 left.onclick = function(){
    game.movePieceLeft()
 //    console.clear()
-   console.log(game.playfied)
+console.log(game.playfied)
 }
 
 right.onclick = function(){
