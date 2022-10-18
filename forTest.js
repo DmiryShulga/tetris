@@ -1,6 +1,8 @@
 const testGame = window.game
 const  [showPalyfild ,learConsole] = document.querySelectorAll('.btnsConsol')[0].children
-const [show, left, right, down, rotate] = document.querySelectorAll('.btnsDirections')[0].children
+const [left, right, down, show, rotate] = document.querySelectorAll('.btnsDirections')[0].children
+
+console.log(game.activePiece.blocks)
 
 learConsole.onclick = function(){
     console.clear()
@@ -18,20 +20,18 @@ right.onclick = function(){
     game.movePieceRight()
 }
 
-{ showPalyfild ,learConsole}
-
 down.onclick = function(){
     game.movePieceDown()
 }
 
 show.onclick = function(){
-    game.lockPiece()
-    console.log(game.playfied)
+    game.lockPiece
 }
 
 rotate.onclick = function(){
     game.rotatePiece()
     console.log(game.activePiece.blocks)
 }
-
-
+ 
+let a = new Array(20).fill([]) 
+console.log(a)
